@@ -16,7 +16,7 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 # (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-COMPONENT_FILES	:= apb_interface.sv mcu.sv in_buffer.sv out_buffer.sv Triple_DES_Top.sv Triple_DES.sv DES.sv Four_Round_Processing.sv generate_round_keys.sv key_storage.sv key_handler.sv box.sv exp_per.sv flex_counter.sv key1_storage.sv key2_storage.sv round_controller.sv s1.sv s2.sv s3.sv s4.sv s5.sv s6.sv s7.sv s8.sv
+COMPONENT_FILES	:= apb_interface.sv mcu.sv in_buffer.sv out_buffer.sv Triple_DES_Top.sv Triple_DES.sv DES.sv sixteen_rounds.sv generate_round_keys.sv key_storage.sv key_handler.sv box.sv exp_per.sv flex_counter.sv round_controller.sv s1.sv s2.sv s3.sv s4.sv s5.sv s6.sv s7.sv s8.sv
 
 # Specify the name of the top level file (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
@@ -59,7 +59,8 @@ DC_SHELL		:= dc_shell-t
 ##############################################################################
 .PHONY: help clean veryclean
 .PHONY: print_vars
-.PHONY: sim_full_source sim_full_mapped
+.PHONY: sim_full_source 
+.phony: sim_full_mapped
 .PHONY: syn_mapped
 
 ##############################################################################
@@ -336,7 +337,7 @@ uniquify
 # Step 2: Set design constraints
 # Uncomment below to set timing, area, power, etc. constraints
 # set_max_delay <delay> -from "<input>" -to "<output>"
-# set_max_area 8000000
+# set_max_area <area>
 # set_max_total_power <power> mW
 $(if $(and $(CLOCK_NAME), $(CLOCK_PERIOD)), create_clock "$(CLOCK_NAME)" -name "$(CLOCK_NAME)" -period $(CLOCK_PERIOD))
 
@@ -345,7 +346,7 @@ compile -map_effort high
 
 # Step 4: Output reports
 report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/$(MOD_NAME).rep
-report_area ->> reports/$(MOD_NAME).rep
+report_area >> reports/$(MOD_NAME).rep
 report_power -hier >> reports/$(MOD_NAME).rep
 
 # Step 5: Output final VHDL and Verilog files
