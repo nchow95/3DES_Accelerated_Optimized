@@ -7,12 +7,12 @@ module out_buffer
   input output_data,
   input clear,
   output reg [31:0] data_out,
-  output reg [4:0] count
+  output reg [3:0] count
 );
 
-  reg [23:0] [31:0] buff_data;
-  reg [23:0] [31:0] next_buff_data;
-  reg [4:0] next_count;
+  reg [7:0] [31:0] buff_data;
+  reg [7:0] [31:0] next_buff_data;
+  reg [3:0] next_count;
   integer i;
 
   always_ff @ (negedge n_rst, posedge clk)
@@ -43,7 +43,7 @@ module out_buffer
     else if(data_in_ready && !output_data)
     begin
       next_count = count + 2;
-      for(i = 0; i < 24; i = i + 1)
+      for(i = 0; i < 8; i = i + 1)
       begin
         if(i == count)
 	begin
@@ -58,7 +58,7 @@ module out_buffer
     else if(!data_in_ready && output_data)
     begin
       next_count = count - 1;
-      for(i = 0; i < 24; i = i + 1)
+      for(i = 0; i < 8; i = i + 1)
       begin
         if(i < count - 1)
 	begin
@@ -69,7 +69,7 @@ module out_buffer
     else
     begin
       next_count = count + 1;
-      for(i = 0; i < 24; i = i + 1)
+      for(i = 0; i < 8; i = i + 1)
       begin
         if(i < count - 1)
 	begin

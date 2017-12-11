@@ -6,12 +6,12 @@ module mcu
   output reg shift_out,
   output reg shift_in,
   output reg [2:0] mode3DES,
-  output reg [4:0] count_in,
+  output reg [3:0] count_in,
   output reg in_clear,
   output reg out_clear
 );
 
-  reg [4:0] next_count_in;
+  reg [3:0] next_count_in;
   reg [2:0] next_mode3DES;
   reg next_in_clear;
   reg next_out_clear;
@@ -44,7 +44,7 @@ module mcu
     next_out_clear = 0;
     if(mode == 1)
     begin
-      if(count_in != 24)
+      if(count_in != 8)
       begin
         next_mode3DES = 0;
         shift_in = 1;
@@ -53,7 +53,7 @@ module mcu
     end
     else if(mode == 2)
     begin
-      if(count_in != 24)
+      if(count_in != 10)
       begin
         next_mode3DES = 1;
         shift_in = 1;

@@ -12,8 +12,8 @@ module accelerator
   output PSLVERR
 );
 
-  reg [4:0] data_in_cnt;
-  reg [4:0] data_out_cnt;
+  reg [3:0] data_in_cnt;
+  reg [3:0] data_out_cnt;
   reg [31:0] data_out;
   reg [2:0] mode;
   reg data_out_ready;

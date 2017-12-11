@@ -17,7 +17,10 @@ module DES (
 				 //.data_ready(enable2), .data_out(first_data_out));
 		//eight_rounds R2 (.clk(clk), .n_rst(n_rst), .enable(enable2), .mode(mode), .data_block(first_data_out),  .round_keys({r9_key, r10_key, r11_key, r12_key, r13_key, r14_key, r15_key, r16_key}), 
 				//.data_ready(data_ready), .data_out(final_data_out));
-		sixteen_rounds block (.clk(clk), .n_rst(n_rst), .enable(enable), .mode(mode), .data_block(data_in),  
+		sixteen_rounds block(.clk(clk), .n_rst(n_rst), .enable(enable), .mode(mode), .data_block(data_in),  
 				.round_keys({r1_key, r2_key, r3_key, r4_key, r5_key, r6_key, r7_key, r8_key, r9_key, r10_key, r11_key, r12_key, r13_key, r14_key, r15_key, r16_key}), 
 				.data_ready(data_ready), .data_out(final_data_out));
+		//four_eight block(.clk(clk), .n_rst(n_rst), .enable(enable), .mode(mode), .data_block(data_in),  
+				//.round_keys({r1_key, r2_key, r3_key, r4_key, r5_key, r6_key, r7_key, r8_key, r9_key, r10_key, r11_key, r12_key, r13_key, r14_key, r15_key, r16_key}), 
+				//.data_ready(data_ready), .data_out(final_data_out));
 endmodule 

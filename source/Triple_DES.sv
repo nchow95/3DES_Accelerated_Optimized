@@ -8,11 +8,11 @@ module Triple_DES (
 	output wire data_ready,
 	output wire[63:0] data_out
 );
+	wire dr1,dr2;
 	wire [47:0] r1_01, r1_02, r1_03, r1_04, r1_05, r1_06, r1_07, r1_08, r1_09, r1_10, r1_11, r1_12, r1_13, r1_14, r1_15, r1_16;  //key 1 round keys
 	wire [47:0] r2_01, r2_02, r2_03, r2_04, r2_05, r2_06, r2_07, r2_08, r2_09, r2_10, r2_11, r2_12, r2_13, r2_14, r2_15, r2_16;  //key 2 round keys
-	wire dr1, dr2, busy1, busy2;  //intermediate data_ready and busy signals
-	wire[63:0] data_out1, data_out2;  //intermediate data_out values
-	
+	wire[63:0] data_out1, data_out2;  
+	wire enable2;
 
 	//generate the round keys
 	generate_round_keys Round_Key1	(.clk(clk), .n_rst(n_rst), .key(key1), .mode(mode[1:0]), .round1(r1_01), .round2(r1_02), .round3(r1_03), .round4(r1_04), 
