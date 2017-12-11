@@ -1,0 +1,291 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'accelerator' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Information: Timing loop detected. (OPT-150)
+	PIPE_TOP/DUT/des1/R1/timer/U14/D PIPE_TOP/DUT/des1/R1/timer/U14/Y PIPE_TOP/DUT/des1/R1/timer/U7/B PIPE_TOP/DUT/des1/R1/timer/U7/Y 
+Information: Timing loop detected. (OPT-150)
+	PIPE_TOP/DUT/des3/R4/timer/U14/D PIPE_TOP/DUT/des3/R4/timer/U14/Y PIPE_TOP/DUT/des3/R4/timer/U8/B PIPE_TOP/DUT/des3/R4/timer/U8/Y 
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des1/R1/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des3/R4/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des3/R3/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des3/R2/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des3/R1/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des2/R4/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des2/R3/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des2/R2/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des2/R1/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des1/R4/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des1/R3/timer/U14'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'D' and 'Y' on cell 'PIPE_TOP/DUT/des1/R2/timer/U14'
+         to break a timing loop. (OPT-314)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : accelerator
+Version: K-2015.06-SP1
+Date   : Sun Dec 10 19:34:47 2017
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: APB/state_reg[0]
+              (rising edge-triggered flip-flop)
+  Endpoint: PRDATA[31] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  APB/state_reg[0]/CLK (DFFSR)             0.00 #     0.00 r
+  APB/state_reg[0]/Q (DFFSR)               0.70       0.70 r
+  APB/U141/Y (INVX1)                       0.70       1.40 f
+  APB/U140/Y (NAND3X1)                     0.72       2.12 r
+  APB/U7/Y (INVX2)                         0.76       2.88 f
+  APB/U101/Y (AND2X1)                      0.36       3.25 f
+  APB/PRDATA[31] (apb_interface)           0.00       3.25 f
+  PRDATA[31] (out)                         0.00       3.25 f
+  data arrival time                                   3.25
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : accelerator
+Version: K-2015.06-SP1
+Date   : Sun Dec 10 19:34:49 2017
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+accelerator                             159.106  345.809 2.65e+03  504.918 100.0
+  PIPE_TOP (Triple_DES_Top)             157.727  253.377 1.93e+03  411.106  81.4
+    DUT (Triple_DES)                    157.726  240.275 1.84e+03  398.003  78.8
+      des3 (DES_0)                       52.565   80.087  584.351  132.653  26.3
+        R4 (Four_Round_Processing_0)     13.142   20.022  146.118   33.164   6.6
+          cont (round_controller_0)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_0)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_0)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_0)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_0)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_0)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_0)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_0)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_0)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_0)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_0)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_0)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_0)       5.64e-04    0.308    3.236    0.308   0.1
+        R3 (Four_Round_Processing_1)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_1)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_1)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_1)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_1)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_1)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_1)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_1)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_1)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_1)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_1)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_1)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_1)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_1)       5.64e-04    0.308    3.195    0.308   0.1
+        R2 (Four_Round_Processing_2)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_2)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_2)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_2)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_2)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_2)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_2)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_2)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_2)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_2)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_2)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_2)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_2)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_2)       5.64e-04    0.308    3.195    0.308   0.1
+        R1 (Four_Round_Processing_3)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_3)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_3)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_3)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_3)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_3)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_3)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_3)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_3)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_3)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_3)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_3)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_3)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_3)       5.64e-04    0.308    3.195    0.308   0.1
+      des2 (DES_1)                       52.565   80.087  584.311  132.653  26.3
+        R4 (Four_Round_Processing_4)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_4)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_4)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_4)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_4)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_4)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_4)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_4)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_4)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_4)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_4)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_4)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_4)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_4)       5.64e-04    0.308    3.195    0.308   0.1
+        R3 (Four_Round_Processing_5)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_5)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_5)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_5)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_5)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_5)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_5)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_5)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_5)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_5)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_5)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_5)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_5)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_5)       5.64e-04    0.308    3.195    0.308   0.1
+        R2 (Four_Round_Processing_6)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_6)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_6)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_6)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_6)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_6)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_6)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_6)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_6)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_6)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_6)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_6)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_6)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_6)       5.64e-04    0.308    3.195    0.308   0.1
+        R1 (Four_Round_Processing_7)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_7)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_7)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_7)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_7)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_7)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_7)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_7)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_7)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_7)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_7)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_7)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_7)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_7)       5.64e-04    0.308    3.195    0.308   0.1
+      des1 (DES_2)                       52.565   80.095  584.311  132.660  26.3
+        R4 (Four_Round_Processing_8)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_8)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_8)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_8)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_8)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_8)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_8)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_8)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_8)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_8)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_8)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_8)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_8)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_8)       5.64e-04    0.308    3.195    0.308   0.1
+        R3 (Four_Round_Processing_9)     13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_9)       0.967   11.519   41.679   12.486   2.5
+          box_block (box_9)               9.070    5.232   62.295   14.301   2.8
+            eight (s8_9)                  1.092    0.530    7.101    1.623   0.3
+            seven (s7_9)                  1.166    0.618    6.919    1.784   0.4
+            six (s6_9)                    1.220    0.539    7.066    1.759   0.3
+            five (s5_9)                   1.031    0.485    7.116    1.515   0.3
+            four (s4_9)                   1.012    0.510    7.078    1.522   0.3
+            three (s3_9)                  1.072    0.514    6.998    1.587   0.3
+            two (s2_9)                    1.064    0.521    7.131    1.584   0.3
+            one (s1_9)                    1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_9)        1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_9)        0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_9)       5.64e-04    0.308    3.195    0.308   0.1
+        R2 (Four_Round_Processing_10)    13.141   20.022  146.078   33.163   6.6
+          cont (round_controller_10)      0.967   11.519   41.679   12.486   2.5
+          box_block (box_10)              9.070    5.232   62.295   14.301   2.8
+            eight (s8_10)                 1.092    0.530    7.101    1.623   0.3
+            seven (s7_10)                 1.166    0.618    6.919    1.784   0.4
+            six (s6_10)                   1.220    0.539    7.066    1.759   0.3
+            five (s5_10)                  1.031    0.485    7.116    1.515   0.3
+            four (s4_10)                  1.012    0.510    7.078    1.522   0.3
+            three (s3_10)                 1.072    0.514    6.998    1.587   0.3
+            two (s2_10)                   1.064    0.521    7.131    1.584   0.3
+            one (s1_10)                   1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_10)       1.540    2.179    8.654    3.719   0.7
+          key_cont (key_handler_10)       0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_10)      5.64e-04    0.308    3.195    0.308   0.1
+        R1 (Four_Round_Processing_11)    13.141   20.030  146.078   33.171   6.6
+          cont (round_controller_11)      0.967   11.520   41.679   12.487   2.5
+          box_block (box_11)              9.070    5.233   62.295   14.302   2.8
+            eight (s8_11)                 1.092    0.530    7.101    1.623   0.3
+            seven (s7_11)                 1.166    0.618    6.919    1.784   0.4
+            six (s6_11)                   1.220    0.539    7.066    1.759   0.3
+            five (s5_11)                  1.031    0.485    7.116    1.515   0.3
+            four (s4_11)                  1.012    0.510    7.078    1.522   0.3
+            three (s3_11)                 1.072    0.514    6.998    1.587   0.3
+            two (s2_11)                   1.064    0.521    7.131    1.584   0.3
+            one (s1_11)                   1.206    0.570    7.117    1.777   0.4
+          expand_block (exp_per_11)       1.540    2.182    8.654    3.722   0.7
+          key_cont (key_handler_11)       0.000    0.000   12.064 1.21e-05   0.0
+          timer (flex_counter_11)      5.63e-04    0.308    3.195    0.308   0.1
+      Round_Key2 (generate_round_keys_0)
+                                       1.67e-02 1.86e-03   44.466 1.86e-02   0.0
+      Round_Key1 (generate_round_keys_1)
+                                       1.67e-02 2.33e-03   44.466 1.91e-02   0.0
+    k2 (key_storage_0)                    0.000    6.551   44.397    6.551   1.3
+    k1 (key_storage_1)                    0.000    6.551   44.397    6.551   1.3
+  OUTBUFF (out_buffer)                 1.30e-03   82.402  645.306   82.404  16.3
+  INBUFF (in_buffer)                      0.113    7.069   45.970    7.182   1.4
+  MCU (mcu)                            6.43e-02    1.082   10.060    1.147   0.2
+  APB (apb_interface)                     1.199    1.879   12.215    3.078   0.6
+1
