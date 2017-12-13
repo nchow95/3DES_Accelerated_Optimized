@@ -34,9 +34,9 @@ module apb_interface
     case(state)
     IDLE:
     begin
-      if(PSEL && (PADDR == 0 || PADDR == 1) && PWRITE && data_in_cnt != 8)
+      if(PSEL && (PADDR == 0 || PADDR == 1) && PWRITE && data_in_cnt != 24)
 	nxt_state = ENCDEC;
-      else if(PSEL && (PADDR == 0 || PADDR == 1) && PWRITE && data_in_cnt == 8)
+      else if(PSEL && (PADDR == 0 || PADDR == 1) && PWRITE && data_in_cnt == 24)
 	nxt_state = IN_FULL;
       else if(PSEL && PADDR == 2 && PWRITE)
 	nxt_state = KEY_CHANGE;
@@ -166,11 +166,11 @@ module apb_interface
     end
     CHECK_IN:
     begin
-      PRDATA = {28'b0, data_in_cnt};
+      PRDATA = {27'b0, data_in_cnt};
     end
     CHECK_OUT:
     begin
-      PRDATA = {28'b0, data_out_cnt};
+      PRDATA = {27'b0, data_out_cnt};
     end
     endcase
   end

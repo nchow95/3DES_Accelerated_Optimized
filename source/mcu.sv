@@ -53,7 +53,7 @@ module mcu
     end
     else if(mode == 2)
     begin
-      if(count_in != 10)
+      if(count_in != 8)
       begin
         next_mode3DES = 1;
         shift_in = 1;
